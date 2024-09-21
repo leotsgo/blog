@@ -1,0 +1,1 @@
+Você pode me encontrar no [Telegram](https://t.me/leotsgo) ou por email: me@leotsgo.dev
