@@ -1,36 +1,44 @@
 author = "Leonardo Bermejo"
-info = "SRE & Software Engineer"
+info = "Software Engineer & SRE"
 description = "My own little corner of the web"
 avatarURL = "images/avatar.jpg"
 
 [[social]]
 name = "Github"
+url = "https://github.com/leotsgo/"
 icon = "fa-brands fa-github fa-2x"
 weight = 1
-url = "https://github.com/leotsgo/"
+rel = ""
+type = ""
 
 [[social]]
 name = "Bluesky"
+url = "https://bsky.app/profile/leotsgo.dev"
 icon = "fa-brands fa-bluesky fa-2x"
 weight = 2
-url = "https://bsky.app/profile/leotsgo.dev"
+rel = ""
+type = ""
 
 [[social]]
 name = "Telegram"
+url = "https://t.me/leotsgo"
 icon = "fa-brands fa-telegram fa-2x"
 weight = 3
-url = "https://t.me/leotsgo"
+rel = ""
+type = ""
 
 [[social]]
 name = "LinkedIn"
+url = "https://www.linkedin.com/in/leonardodiber/"
 icon = "fa-brands fa-linkedin fa-2x"
 weight = 4
-url = "https://www.linkedin.com/in/leonardodiber/"
+rel = ""
+type = ""
 
 [[social]]
 name = "RSS"
+url = "https://leotsgo.dev/index.xml"
 icon = "fa-solid fa-rss fa-2x"
 weight = 5
-url = "https://leotsgo.dev/index.xml"
 rel = "alternate"
 type = "application/rss+xml"
