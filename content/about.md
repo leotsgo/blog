@@ -9,6 +9,6 @@ I started my career in a CRM startup, where I worked as a Full Stack Software En
 
 Aside from work you may find me fiddling with my [dotfiles](https://github.com/leotsgo/dotfiles) \~_which are due to a rework pls send hlp_\~. I love neovim and arch linux ~~btw~~, even though I spend most of my time in Ubuntu in my work computer.
 
-If you wanna know what I'm up to these days, please click [here]({{< relref "/now" >}}).
+If you wanna know what I'm up to these days, check out my [now page]({{< relref "/now" >}}).
 
 To contact me, just go to my [contact page]({{< relref "/contact" >}})

@@ -1,0 +1,194 @@
+/* YANA / resume-app palette (paper, ink, amber) with self-hosted Schibsted Grotesk
+   and Martian Mono. Tokens swap with the colorscheme-* class hugo-coder's toggle puts
+   on <body>; assets/scss/_variables.scss points the theme at them. */
+
+@font-face {
+  font-family: "Schibsted Grotesk";
+  src: url("/fonts/schibsted-grotesk-latin-wght-normal.woff2") format("woff2-variations");
+  font-weight: 400 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Martian Mono";
+  src: url("/fonts/martian-mono-latin-400-normal.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Martian Mono";
+  src: url("/fonts/martian-mono-latin-500-normal.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+
+body {
+  --bg: #faf7f2; --bg-2: #f3efe7; --bg-3: #ebe6dc;
+  --ink: #1d1b18; --ink-2: #5b564e; --ink-3: #8d877c;
+  --line: #e2dcd0; --line-2: #d3ccbe;
+  --accent: #b8691e; --accent-ink: #9a5614; --accent-soft: #f6e6d2; --accent-text: #fff;
+  --danger: #9a3412; --ok: #3d6b2e;
+  --code-kw: #8a3d0f; --code-str: #5f6f2a; --code-fn: #1f4e79; --code-num: #7a4d9a;
+  --rule: rgba(29, 27, 24, 0.055);
+  --glow: rgba(184, 105, 30, 0.16);
+  --card: #fffdf9;
+  --shadow: 0 24px 60px rgba(29, 27, 24, 0.12), 0 4px 14px rgba(29, 27, 24, 0.06);
+  --sans: "Schibsted Grotesk", system-ui, sans-serif;
+  --mono: "Martian Mono", ui-monospace, monospace;
+}
+body.colorscheme-dark {
+  --bg: #1c1a17; --bg-2: #232019; --bg-3: #2c2821;
+  --ink: #ece7dd; --ink-2: #b4ac9e; --ink-3: #7f786c;
+  --line: #322e27; --line-2: #433e35;
+  --accent: #d9893b; --accent-ink: #e9a35e; --accent-soft: #3a2914; --accent-text: #1c1a17;
+  --danger: #e0805e; --ok: #8fbf7a;
+  --code-kw: #e08f5a; --code-str: #a9c26a; --code-fn: #82b1e0; --code-num: #c39be0;
+  --rule: rgba(236, 231, 221, 0.04);
+  --glow: rgba(217, 137, 59, 0.2);
+  --card: #211e1a;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.55), 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+@media (prefers-color-scheme: dark) {
+  body.colorscheme-auto {
+    --bg: #1c1a17; --bg-2: #232019; --bg-3: #2c2821;
+    --ink: #ece7dd; --ink-2: #b4ac9e; --ink-3: #7f786c;
+    --line: #322e27; --line-2: #433e35;
+    --accent: #d9893b; --accent-ink: #e9a35e; --accent-soft: #3a2914; --accent-text: #1c1a17;
+    --danger: #e0805e; --ok: #8fbf7a;
+    --code-kw: #e08f5a; --code-str: #a9c26a; --code-fn: #82b1e0; --code-num: #c39be0;
+    --rule: rgba(236, 231, 221, 0.04);
+    --glow: rgba(217, 137, 59, 0.2);
+    --card: #211e1a;
+    --shadow: 0 24px 70px rgba(0, 0, 0, 0.55), 0 4px 14px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* --- whole site -------------------------------------------------------- */
+
+body { -webkit-font-smoothing: antialiased; }
+::selection { background: var(--accent-soft); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+a { text-decoration-color: var(--line-2); text-underline-offset: 3px; }
+a:hover { text-decoration-color: currentColor; }
+h1, h2, h3, h4 { letter-spacing: -0.02em; }
+code { font-size: 0.88em; border-radius: 4px; }
+pre code { font-size: 13px; }
+
+.navigation .navigation-title {
+  font: 800 19px/1 var(--sans); letter-spacing: -0.02em; text-transform: none; color: var(--ink);
+}
+.navigation .navigation-title::after { content: "/"; color: var(--accent); margin-left: 1px; }
+.navigation a, .navigation .menu-separator { color: var(--ink-2); }
+.navigation a:hover { color: var(--ink); }
+
+/* inline SVG icons (partials/icon.html) in the slots the theme styles as <i> */
+.icon { width: 1em; height: 1em; vertical-align: -0.125em; }
+.float-container a .icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.navigation .menu-button .icon { color: var(--ink); cursor: pointer; }
+.navigation .menu-button .icon:hover { color: var(--accent-ink); }
+.navigation #menu-toggle:checked + label > .icon { color: var(--line); }
+/* external-link marker as an SVG mask; the theme draws it with the icon font */
+.content article a.external-link::after {
+  content: ""; display: inline-block; width: 0.7em; height: 0.7em; margin-left: 0.35em; padding: 0;
+  font: inherit; vertical-align: baseline; background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z'/></svg>") no-repeat center / contain;
+  mask: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><path d='M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32l82.7 0L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3l0 82.7c0 17.7 14.3 32 32 32s32-14.3 32-32l0-160c0-17.7-14.3-32-32-32L320 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z'/></svg>") no-repeat center / contain;
+}
+
+/* --- home: .home prefix outranks the theme's `body.colorscheme-dark a` --- */
+
+.home { padding-bottom: clamp(48px, 9vh, 96px); }
+
+.home-hero {
+  position: relative; isolation: isolate;
+  display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 72px); align-items: center;
+  padding: clamp(40px, 9vh, 104px) 0 clamp(48px, 10vh, 112px);
+}
+/* ruled paper with an amber glow behind the portrait */
+.home-hero::before {
+  content: ""; position: absolute; inset: 0 -50vw; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(520px 380px at 72% 45%, var(--glow), transparent 70%),
+    repeating-linear-gradient(to bottom, transparent 0 31px, var(--rule) 31px 32px);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 70%, transparent 100%);
+}
+
+.home-eyebrow {
+  margin: 0 0 22px; font: 500 12.5px/1.4 var(--mono); color: var(--accent-ink);
+  letter-spacing: 0.02em;
+}
+.home-eyebrow::before { content: "$ "; color: var(--ink-2); }
+.home-hero h1 {
+  margin: 0; font-weight: 820; font-size: clamp(44px, 6.4vw, 92px); line-height: 0.95;
+  letter-spacing: -0.045em; color: var(--ink);
+}
+.home-hero h1 span { display: block; }
+.home-intro {
+  margin: 26px 0 0; max-width: 32em; font-size: clamp(17px, 1.5vw, 19.5px);
+  line-height: 1.55; color: var(--ink-2);
+}
+.home-cta { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 10px; }
+.home .btn {
+  display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px;
+  font: 600 15px/1 var(--sans); text-decoration: none; white-space: nowrap;
+  color: var(--ink); background: transparent; border: 1px solid var(--line-2); border-radius: 8px;
+  transition: background 120ms, border-color 120ms, transform 120ms;
+}
+.home .btn:hover { background: var(--bg-2); border-color: var(--ink-3); }
+.home .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+.home .btn.primary:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
+.home .btn:active { transform: translateY(1px); }
+
+.home-social ul { display: flex; gap: 6px; margin: 30px 0 0; padding: 0; list-style: none; }
+.home .home-social a {
+  display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 8px;
+  color: var(--ink-2); transition: color 120ms, background 120ms;
+}
+.home .home-social a:hover { color: var(--accent-ink); background: var(--accent-soft); }
+.home .home-social .icon { width: 20px; height: 20px; }
+
+.home-portrait { justify-self: center; position: relative; }
+.home-portrait img {
+  display: block; width: clamp(200px, 24vw, 320px); height: auto; aspect-ratio: 1; object-fit: cover;
+  border-radius: 20px; border: 1px solid var(--line); box-shadow: var(--shadow);
+  transform: rotate(2deg);
+}
+.home-portrait::after {
+  content: ""; position: absolute; inset: 14px -14px -14px 14px; z-index: -1;
+  border: 1.5px solid var(--accent); border-radius: 20px; transform: rotate(2deg);
+}
+
+/* latest posts, rendered like `git log --oneline` */
+.home-log { border-top: 1px solid var(--line); padding-top: clamp(40px, 7vh, 72px); }
+.home-log-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.home-log h2 { margin: 0; font-size: clamp(26px, 3vw, 38px); font-weight: 780; letter-spacing: -0.035em; }
+.home-log-cmd { font: 400 12px/1 var(--mono); color: var(--ink-2); }
+.home-log ol { list-style: none; margin: 28px 0 0; padding: 0; }
+.home-log li { border-bottom: 1px dashed var(--line); }
+.home .home-log li a {
+  display: grid; grid-template-columns: 11ch minmax(0, 1fr) auto; gap: 20px; align-items: baseline;
+  padding: 18px 0; color: var(--ink); text-decoration: none;
+}
+.home-log time { font: 500 12.5px/1 var(--mono); color: var(--accent-ink); }
+.home-log .title { font-size: 19px; font-weight: 650; letter-spacing: -0.015em; transition: color 120ms; }
+.home-log .tags { font: 400 11.5px/1 var(--mono); color: var(--ink-2); }
+.home-log li a:hover .title { color: var(--accent-ink); }
+.home .home-log-all { display: inline-block; margin-top: 22px; font: 500 13px/1 var(--mono); color: var(--ink-2); }
+
+/* One orchestrated entrance, nothing else moves. The headline is left out on
+   purpose, and so is the portrait (the LCP element): Chrome never counts an element
+   that becomes visible through an animation, so LCP would fall to the footer. */
+.reveal { opacity: 0; transform: translateY(14px); animation: rise 700ms cubic-bezier(.2, .7, .2, 1) forwards; animation-delay: calc(var(--d) * 120ms + 60ms); }
+@keyframes rise { to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; animation: none; }
+}
+
+@media (max-width: 860px) {
+  .home-hero { grid-template-columns: 1fr; }
+  .home-portrait { grid-row: 1; justify-self: start; }
+  .home-portrait img { width: 140px; border-radius: 16px; }
+  .home-portrait::after { inset: 8px -8px -8px 8px; border-radius: 16px; }
+}
+@media (max-width: 600px) {
+  .home .home-log li a { grid-template-columns: 1fr; gap: 6px; }
+  .home-log .tags { display: none; }
+  .home .home-cta .btn { flex: 1; justify-content: center; }
+}

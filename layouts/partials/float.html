@@ -1,0 +1,8 @@
+{{/* Theme override: inline SVG toggle icon via partials/icon.html. */}}
+{{ if not .Site.Params.hideColorSchemeToggle }}
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        {{ partial "icon.html" "fa-solid fa-adjust" }}
+    </a>
+</div>
+{{ end }}

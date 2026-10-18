@@ -38,7 +38,7 @@ hideColorSchemeToggle = false
 # Series see also post count
 maxSeeAlsoItems = 5
 # Custom CSS
-customCSS = []
+customCSS = [] # site.css is inlined by layouts/partials/head/theme-styles.html
 # Custom SCSS, file path is relative to Hugo's asset folder (default: {your project root}/assets)
 customSCSS = []
 
@@ -180,3 +180,17 @@ url = "posts/"
 name = "Contato"
 weight = 5
 url = "contact/"
+
+# static/images is also mounted as an asset so templates can resize what the CMS
+# uploads there (the homepage portrait). Defining any mount replaces Hugo's
+# defaults for that target, hence the explicit assets and static entries.
+[module]
+[[module.mounts]]
+source = "assets"
+target = "assets"
+[[module.mounts]]
+source = "static/images"
+target = "assets/images"
+[[module.mounts]]
+source = "static"
+target = "static"

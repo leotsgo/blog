@@ -11,4 +11,4 @@ _Last updated at {{< lastmod >}}._
 
 ---
 
-This is a **now page**, a place to share what I'm currently doing at the moment. To learn more, click [here](https://nownownow.com/about)
+This is a **now page**, a place to share what I'm currently doing at the moment. To learn more, see [nownownow.com](https://nownownow.com/about)

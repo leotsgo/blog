@@ -1,0 +1,49 @@
+{{ define "content" }}
+{{ $p := site.Params }}
+{{ $name := split $p.author " " }}
+<div class="home container">
+  <section class="home-hero">
+    <div>
+      <p class="home-eyebrow reveal" style="--d:0">{{ $p.info }}</p>
+      <h1>
+        <span>{{ index $name 0 }}</span>
+        {{ with after 1 $name }}<span>{{ delimit . " " }}</span>{{ end }}
+      </h1>
+      <p class="home-intro reveal" style="--d:2">{{ $p.intro | default $p.description | markdownify }}</p>
+      <div class="home-cta reveal" style="--d:3">
+        <a class="btn primary" href="{{ "posts/" | relLangURL }}">{{ i18n "home_read" }} →</a>
+        <a class="btn" href="{{ "about/" | relLangURL }}">{{ i18n "home_about" }}</a>
+      </div>
+      <div class="home-social reveal" style="--d:4">{{ partial "home/social.html" . }}</div>
+    </div>
+    {{ with $p.avatarURL }}
+    {{ $img := partial "home/portrait.html" . }}
+    <div class="home-portrait">
+      <img src="{{ $img.src | default (. | relURL) }}"{{ with $img.srcset }} srcset="{{ . }}" sizes="{{ $img.sizes }}"{{ end }} alt="{{ $p.author }}" width="320" height="320" fetchpriority="high">
+    </div>
+    {{ end }}
+  </section>
+
+  {{ $posts := where site.RegularPages "Section" "posts" }}
+  {{ with $posts }}
+  <section class="home-log reveal" style="--d:5">
+    <div class="home-log-head">
+      <h2>{{ i18n "home_latest" }}</h2>
+      <span class="home-log-cmd" aria-hidden="true">git log --oneline -n {{ len (first 5 .) }}</span>
+    </div>
+    <ol>
+      {{ range first 5 . }}
+      <li>
+        <a href="{{ .RelPermalink }}">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+          <span class="title">{{ .Title }}</span>
+          <span class="tags">{{ with .Params.tags }}{{ delimit (apply . "printf" "#%s" ".") " " }}{{ end }}</span>
+        </a>
+      </li>
+      {{ end }}
+    </ol>
+    {{ if gt (len .) 5 }}<a class="home-log-all" href="{{ "posts/" | relLangURL }}">{{ i18n "home_all" }} →</a>{{ end }}
+  </section>
+  {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,16 @@
+{{/* Inline SVG for a Font Awesome class string ("fa-brands fa-github fa-2x"),
+     taken from assets/icons/<name>.svg. Pages that draw no icon-font glyph never
+     download the ~275 KB icon fonts. Unknown names fall back to the <i> tag. */}}
+{{ $class := . }}
+{{ $name := "" }}
+{{ range split $class " " }}
+  {{ if and (hasPrefix . "fa-") (not $name) (not (in (slice "fa-brands" "fa-solid" "fa-regular" "fa-fw" "fa-lg" "fa-2x" "fa-3x") .)) }}
+    {{ $name = strings.TrimPrefix "fa-" . }}
+  {{ end }}
+{{ end }}
+{{ if eq $name "adjust" }}{{ $name = "circle-half-stroke" }}{{ end }}
+{{ with resources.Get (printf "icons/%s.svg" $name) }}
+  {{ replace .Content "<svg " "<svg class=\"icon\" aria-hidden=\"true\" focusable=\"false\" fill=\"currentColor\" " | safeHTML }}
+{{ else }}
+  <i class="{{ $class }}" aria-hidden="true"></i>
+{{ end }}

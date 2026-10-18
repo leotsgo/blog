@@ -1,0 +1,11 @@
+{{/* Returns the homepage portrait as a srcset of resized WebPs, or nothing when
+     avatarURL is not a local image. Used by index.html and head/extensions.html. */}}
+{{ $out := dict }}
+{{ with site.Params.avatarURL }}
+  {{ with resources.Get (strings.TrimPrefix "/" .) }}
+    {{ $small := .Process "resize 280x webp q80" }}
+    {{ $large := .Process (printf "resize %dx webp q80" (int (math.Min .Width 640))) }}
+    {{ $out = dict "src" $large.RelPermalink "srcset" (printf "%s 280w, %s %dw" $small.RelPermalink $large.RelPermalink $large.Width) "sizes" "(max-width: 860px) 140px, 320px" }}
+  {{ end }}
+{{ end }}
+{{ return $out }}

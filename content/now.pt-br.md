@@ -10,4 +10,4 @@ _Last updated at {{< lastmod >}}._
 - Construindo o meu homelab, em breve haverão mais posts meus sobre o assunto
 ---
 
-Essa é uma **now page**, um lugar para compartilhar o que estou fazendo no momento. Para saber mais clique [aqui](https://nownownow.com/about)
+Essa é uma **now page**, um lugar para compartilhar o que estou fazendo no momento. Para saber mais, veja [nownownow.com](https://nownownow.com/about)

@@ -1,0 +1,27 @@
+// Overrides the theme's GitHub-style highlight colors (several fail WCAG contrast)
+// with YANA's code tokens from assets/css/site.css, which swap for dark mode.
+.bg, .chroma { color: var(--ink); background-color: var(--bg-2); }
+.chroma .lntd { vertical-align: top; padding: 0; margin: 0; border: 0; }
+.chroma .lntable { border-spacing: 0; padding: 0; margin: 0; border: 0; }
+.chroma .lnlinks { outline: none; text-decoration: none; color: inherit; }
+.chroma .line { display: flex; }
+.chroma .hl { background-color: var(--accent-soft); }
+.chroma .lnt, .chroma .ln { white-space: pre; user-select: none; margin-right: 0.4em; padding: 0 0.4em; color: var(--ink-2); }
+.chroma .err { color: var(--danger); }
+
+// comments
+.chroma :is(.c, .ch, .cm, .c1, .cs, .cp, .cpf) { color: var(--ink-2); font-style: italic; }
+// keywords
+.chroma :is(.k, .kc, .kd, .kn, .kp, .kr, .kt, .ow, .nt) { color: var(--code-kw); }
+// strings
+.chroma :is(.s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss) { color: var(--code-str); }
+// names: functions, builtins, classes, attributes
+.chroma :is(.nf, .fm, .nb, .bp, .nc, .nd, .ne, .na, .nv, .vc, .vg, .vi, .vm) { color: var(--code-fn); }
+// numbers and literals
+.chroma :is(.m, .mb, .mf, .mh, .mi, .il, .mo, .l, .ld) { color: var(--code-num); }
+// diffs
+.chroma .gd { color: var(--danger); }
+.chroma .gi { color: var(--ok); }
+.chroma :is(.gh, .gu) { color: var(--ink-2); font-weight: 600; }
+.chroma .ge { font-style: italic; }
+.chroma .gs { font-weight: 600; }

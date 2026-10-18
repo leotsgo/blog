@@ -9,6 +9,6 @@ Comecei minha carreira numa startup de CRM, onde trabalhei como Desenvolvedor Fu
 
 Para além do trabalho, você provavelmente vai me encontrar fuçando nos meus [dotfiles](https://github.com/leotsgo/dotfiles). Eu amo neovim e arch linux, embora hoje em dia passe a maior parte do tempo no Ubuntu do computador do trabalho.
 
-Se quiser saber o que ando aprontando, [clique aqui]({{< relref "/now" >}}).
+Se quiser saber o que ando aprontando, dá uma olhada na [página Agora]({{< relref "/now" >}}).
 
-Para entrar em contato comigo, [clique aqui]({{< relref "/contact" >}})
+Para entrar em contato comigo, é só ir na [página de contato]({{< relref "/contact" >}})

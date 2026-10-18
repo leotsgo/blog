@@ -1,0 +1,11 @@
+{{/* Overrides the theme partial: all CSS (theme, dark rules, site palette) is
+     inlined in one <style>, so first paint waits on no extra request. The icon
+     fonts load after first paint (see scss/fa-fonts.scss); the theme's Font
+     Awesome preloads are dropped. */}}
+{{ $coder := resources.Get "scss/coder.scss" | resources.ExecuteAsTemplate "style.coder.css" . | toCSS (dict "targetPath" "css/coder.css") }}
+{{ $dark := resources.Get "scss/coder-dark.scss" | resources.ExecuteAsTemplate "style.coder-dark.css" . | toCSS (dict "targetPath" "css/coder-dark.css") }}
+{{ $css := slice $coder $dark (resources.Get "css/site.css") | resources.Concat "css/all.css" | minify }}
+<style>{{ $css.Content | safeCSS }}</style>
+{{ $icons := resources.Get "scss/fa-fonts.scss" | toCSS (dict "targetPath" "css/fa-fonts.css") | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $icons.RelPermalink }}" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="{{ $icons.RelPermalink }}"></noscript>

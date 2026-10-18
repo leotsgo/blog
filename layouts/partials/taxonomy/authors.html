@@ -1,0 +1,10 @@
+{{/* Theme override: inline SVG icons via partials/icon.html. */}}
+<div class="authors">
+  {{ partial "icon.html" "fa-solid fa-user" }}
+  {{- range $index, $el := . -}}
+    {{- if gt $index 0 }}
+      <span class="separator">•</span>
+    {{- end }}
+    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+  {{- end -}}
+</div>

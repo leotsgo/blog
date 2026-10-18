@@ -1,0 +1,8 @@
+{{/* On the homepage the portrait is the LCP element. The inlined CSS reveals the
+     fonts before the parser reaches the <img>, so the image is preloaded first. */}}
+{{ if .IsHome }}{{ with site.Params.avatarURL }}
+{{ $img := partial "home/portrait.html" . }}
+<link rel="preload" href="{{ $img.src | default (. | relURL) }}" as="image" fetchpriority="high"{{ with $img.srcset }} {{ printf "imagesrcset=%q imagesizes=%q" . $img.sizes | safeHTMLAttr }}{{ end }}>
+{{ end }}{{ end }}
+{{/* The homepage headline is set in this font; fetching it with the HTML keeps it off the LCP path. */}}
+<link rel="preload" href="{{ "fonts/schibsted-grotesk-latin-wght-normal.woff2" | relURL }}" as="font" type="font/woff2" crossorigin>

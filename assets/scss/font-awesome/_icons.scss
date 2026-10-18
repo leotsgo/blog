@@ -1,0 +1,17 @@
+// Overrides the theme's _icons.scss, which emits ~2000 icon classes (97% of
+// coder.css; brands.scss is trimmed the same way). Only the icons the templates and social links use are generated.
+// ponytail: allowlist; a new social icon picked in the CMS needs its name added here.
+$used-icons: (
+  // theme templates
+  adjust, bars, calendar, clock, exclamation-circle, exclamation-triangle,
+  external-link, file-text, folder, lightbulb, link, question, sticky-note,
+  tag, times-circle, user,
+  // social links (config/_default/params.toml)
+  bluesky, github, linkedin, rss, telegram
+);
+
+@each $name in $used-icons {
+  $icon: if(map-has-key($fa-icons, $name), map-get($fa-icons, $name), map-get($fa-brand-icons, $name));
+  @if not $icon { @error "Font Awesome has no icon named '#{$name}'"; }
+  .#{$fa-css-prefix}-#{$name}::before { content: unquote("\"#{ $icon }\""); }
+}
