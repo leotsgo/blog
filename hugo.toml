@@ -14,14 +14,12 @@ enableEmoji = true
 [markup.highlight]
 noClasses = false
 
+# Homepage params (author, info, description, avatar, social links) live in
+# config/_default/params*.toml, edited through the CMS.
 [params]
-author = "Leonardo Bermejo"
 faviconSVG = "images/favicon.ico"
 license = '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA-4.0</a>'
-description = "My own little corner of the web"
 keywords = "blog,developer,personal,devops"
-info = "SRE & Software Engineer"
-avatarURL = "images/avatar.jpg"
 #gravatar = "john.doe@example.com"
 dateFormat = "January 2, 2006"
 # since = 2021
@@ -131,37 +129,6 @@ series = "series"
 tag = "tags"
 author = "authors"
 
-[[params.social]]
-name = "Github"
-icon = "fa-brands fa-github fa-2x"
-weight = 1
-url = "https://github.com/leotsgo/"
-
-[[params.social]]
-name = "Bluesky"
-icon = "fa-brands fa-bluesky fa-2x"
-weight = 2
-url = "https://bsky.app/profile/leotsgo.dev"
-
-[[params.social]]
-name = "LinkedIn"
-icon = "fa-brands fa-telegram fa-2x"
-weight = 3
-url = "https://t.me/leotsgo"
-
-[[params.social]]
-name = "LinkedIn"
-icon = "fa-brands fa-linkedin fa-2x"
-weight = 4
-url = "https://www.linkedin.com/in/leonardodiber/"
-
-[[params.social]]
-name = "RSS"
-icon = "fa-solid fa-rss fa-2x"
-weight = 5
-url = "https://leotsgo.dev/index.xml"
-rel = "alternate"
-type = "application/rss+xml"
 
 
 [languages.en]
@@ -192,9 +159,6 @@ languageName = ":brazil:"
 title = "leotsgo"
 
 [languages.pt-br.params]
-author = "Leonardo Bermejo"
-info = "SRE & Software Engineer"
-description = "Meu lugarzinho na internet"
 keywords = "blog,desenvolvedor,pessoal"
 
 [[languages.pt-br.menu.main]]

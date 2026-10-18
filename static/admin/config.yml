@@ -57,3 +57,32 @@ collections:
         file: content/contact.{{locale}}.md
         i18n: true
         fields: *page
+
+  # Homepage: Hugo merges these with hugo.toml; params.pt-br.toml overrides the
+  # translated fields for /pt-br/. Untranslated fields live only in params.toml.
+  - name: site
+    label: Site settings
+    format: toml
+    i18n: true
+    files:
+      - name: home
+        label: Homepage
+        file: config/_default/params.{{locale}}.toml
+        i18n: true
+        fields:
+          - { name: author, label: Name, widget: string }
+          - { name: info, label: Tagline, widget: string, i18n: true }
+          - { name: description, label: Description, widget: string, i18n: true }
+          - { name: avatarURL, label: Avatar, widget: image }
+          - name: social
+            label: Social links
+            label_singular: link
+            widget: list
+            summary: "{{name}} — {{url}}"
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: url, label: URL, widget: string }
+              - { name: icon, label: Icon, widget: string, hint: "Font Awesome classes, e.g. fa-brands fa-github fa-2x" }
+              - { name: weight, label: Order, widget: number, value_type: int }
+              - { name: rel, label: rel, widget: string, required: false }
+              - { name: type, label: type, widget: string, required: false }
