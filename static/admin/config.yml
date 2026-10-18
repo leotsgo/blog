@@ -1,0 +1,50 @@
+# Sveltia CMS. Sign in with a GitHub fine-grained token (Contents: read/write on
+# leotsgo/blog); saving commits to main, which triggers the deploy workflow.
+backend:
+  name: github
+  repo: leotsgo/blog
+  branch: main
+
+media_folder: static/images
+public_folder: /images
+
+i18n:
+  structure: multiple_files
+  locales: [en, pt-br]
+  default_locale: en
+  # foo.md is English, foo.pt-br.md is Portuguese — Hugo's filename convention.
+  omit_default_locale_from_filename: true
+
+collections:
+  - name: posts
+    label: Posts
+    folder: content/posts
+    create: true
+    format: toml-frontmatter
+    slug: "{{title}}"
+    i18n: true
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Title, widget: string, i18n: true }
+      - { name: date, label: Date, widget: datetime, i18n: duplicate }
+      - { name: draft, label: Draft, widget: boolean, default: true, i18n: duplicate }
+      - { name: authors, label: Author, widget: string, default: Leonardo Bermejo, i18n: duplicate }
+      - { name: categories, label: Categories, widget: list, required: false, i18n: duplicate }
+      - { name: tags, label: Tags, widget: list, required: false, i18n: duplicate }
+      - { name: body, label: Body, widget: markdown, i18n: true }
+
+  - name: pages
+    label: Pages
+    format: toml-frontmatter
+    i18n: true
+    files:
+      - name: about
+        label: About
+        file: content/about.md
+        fields: &page
+          - { name: title, label: Title, widget: string, required: false, i18n: true }
+          - { name: date, label: Date, widget: datetime, required: false, i18n: duplicate }
+          - { name: authors, label: Author, widget: string, required: false, i18n: duplicate }
+          - { name: body, label: Body, widget: markdown, i18n: true }
+      - { name: now, label: Now, file: content/now.md, fields: *page }
+      - { name: contact, label: Contact, file: content/contact.md, fields: *page }
