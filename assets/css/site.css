@@ -72,8 +72,13 @@ pre code { font-size: 13px; }
 
 .navigation .navigation-title {
   font: 800 19px/1 var(--sans); letter-spacing: -0.02em; text-transform: none; color: var(--ink);
+  display: inline-flex; align-items: baseline; gap: 0.35em;
 }
-.navigation .navigation-title::after { content: "/"; color: var(--accent); margin-left: 1px; }
+/* rendered as a self-closing tag: < Leonardo Bermejo /> */
+.navigation .navigation-title::before,
+.navigation .navigation-title::after { font: 500 0.82em/1 var(--mono); color: var(--accent); }
+.navigation .navigation-title::before { content: "<"; }
+.navigation .navigation-title::after { content: "/>"; }
 .navigation a, .navigation .menu-separator { color: var(--ink-2); }
 .navigation a:hover { color: var(--ink); }
 
