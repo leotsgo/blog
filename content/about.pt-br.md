@@ -12,5 +12,3 @@ Para além do trabalho, você provavelmente vai me encontrar fuçando nos meus [
 Se quiser saber o que ando aprontando, [clique aqui]({{< relref "/now" >}}).
 
 Para entrar em contato comigo, [clique aqui]({{< relref "/contact" >}})
-
-PGP C342A11391ADB06D
