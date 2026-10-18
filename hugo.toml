@@ -1,5 +1,5 @@
 baseURL = "https://www.leotsgo.dev/"
-title = "leotsgo"
+title = "Leonardo Bermejo"
 theme = "hugo-coder"
 languageCode = "en"
 defaultContentLanguage = "en"
@@ -156,7 +156,7 @@ url = "contact/"
 
 [languages.pt-br]
 languageName = ":brazil:"
-title = "leotsgo"
+title = "Leonardo Bermejo"
 
 [languages.pt-br.params]
 keywords = "blog,desenvolvedor,pessoal"
