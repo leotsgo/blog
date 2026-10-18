@@ -1,6 +1,3 @@
-# Same shape as hopwing/undefined-game's deploy: build and push the image, then
-# bump its tag in leotsgo/homelab; Flux ships it. GitHub-hosted runner, since
-# this repo is public.
 name: deploy
 
 on:
