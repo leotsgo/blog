@@ -4,6 +4,14 @@ backend:
   name: github
   repo: leotsgo/blog
   branch: main
+  # Same style as the hand-written commits. {{collection}} is the collection's
+  # label_singular.
+  commit_messages:
+    create: "content({{collection}}): add {{slug}}"
+    update: "content({{collection}}): update {{slug}}"
+    delete: "content({{collection}}): remove {{slug}}"
+    uploadMedia: "content(media): upload {{path}}"
+    deleteMedia: "content(media): remove {{path}}"
 
 media_folder: static/images
 public_folder: /images
@@ -18,6 +26,7 @@ i18n:
 collections:
   - name: posts
     label: Posts
+    label_singular: post
     folder: content/posts
     create: true
     format: toml-frontmatter
@@ -35,6 +44,7 @@ collections:
 
   - name: pages
     label: Pages
+    label_singular: page
     format: toml-frontmatter
     i18n: true
     files:
@@ -62,6 +72,7 @@ collections:
   # translated fields for /pt-br/. Untranslated fields live only in params.toml.
   - name: site
     label: Site settings
+    label_singular: site
     format: toml
     i18n: true
     files:
